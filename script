@@ -1,0 +1,56 @@
+@echo off
+setlocal enabledelayedexpansion
+
+echo Verificando volume da unidade C:
+vol C:
+
+ver
+
+cls
+
+echo Listando arquivos e pastas da unidade C:
+dir C:\
+
+echo Criando pastas Huginho, Zezinho e Luizinho
+mkdir C:\Huginho C:\Zezinho C:\Luizinho
+
+:: 6 - Verifica se as pastas foram criadas
+echo Verificando criação das pastas:
+if exist C:\Huginho echo Pasta Huginho criada com sucesso.
+if exist C:\Zezinho echo Pasta Zezinho criada com sucesso.
+if exist C:\Luizinho echo Pasta Luizinho criada com sucesso.
+
+echo Criando pastas dentro de Huginho, Zezinho e Luizinho
+mkdir C:\Huginho\Argentina C:\Huginho\Brasil C:\Huginho\Uruguai
+mkdir C:\Zezinho\Argentina C:\Zezinho\Brasil C:\Zezinho\Uruguai
+mkdir C:\Luizinho\Argentina C:\Luizinho\Brasil C:\Luizinho\Uruguai
+
+
+echo Verificando criação das novas pastas:
+if exist C:\Huginho\Argentina echo Pasta Argentina em Huginho criada.
+if exist C:\Huginho\Brasil echo Pasta Brasil em Huginho criada.
+if exist C:\Huginho\Uruguai echo Pasta Uruguai em Huginho criada.
+
+if exist C:\Zezinho\Argentina echo Pasta Argentina em Zezinho criada.
+if exist C:\Zezinho\Brasil echo Pasta Brasil em Zezinho criada.
+if exist C:\Zezinho\Uruguai echo Pasta Uruguai em Zezinho criada.
+
+if exist C:\Luizinho\Argentina echo Pasta Argentina em Luizinho criada.
+if exist C:\Luizinho\Brasil echo Pasta Brasil em Luizinho criada.
+if exist C:\Luizinho\Uruguai echo Pasta Uruguai em Luizinho criada.
+
+echo Removendo pastas Argentina
+rmdir /s /q C:\Huginho\Argentina
+rmdir /s /q C:\Zezinho\Argentina
+rmdir /s /q C:\Luizinho\Argentina
+
+echo Criando arquivo log.txt
+echo Script executado em %date% %time% > C:\log.txt
+
+echo Copiando log.txt para as pastas
+copy C:\log.txt C:\Huginho\log.txt
+copy C:\log.txt C:\Zezinho\log.txt
+copy C:\log.txt C:\Luizinho\log.txt
+
+echo Script concluído.
+pause
